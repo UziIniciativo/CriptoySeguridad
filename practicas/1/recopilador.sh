@@ -55,14 +55,15 @@ PING=$(ping "$IP" -c 4| tail -n 2)
 CHECKCON=$(echo "$PING" |head -n 1| sed  's/packets transmitted/paquetes transmitidos/'| sed  's/received/recibidos/' | sed  's/packet loss/paquetes perdidos/' | sed  's/time/tiempo/')
 LATENCY=$(echo "$PING" | tail -n 1 | sed 's/.*=\s*\([0-9\.]*\)\/\([0-9\.]*\)\/.*/\2/')
 SEGMENT=$(echo "$WHOIS_IP" | grep -iE "inetnum|NetRange|CIDR")
-IPV6=$(digo +short AAAA "$DOMAIN" | head -n 1)
+IPV6=$(dig +short AAAA "$DOMAIN" | head -n 1)
 REVERSE=$(dig -x "$IP" |  grep PTR | grep -oP '\b(?:\d{1,3}\.){3}\d{1,3}\b')
-TRACEROUTE=$(tracerout "$IP")
+TRACEROUTE=$(traceroute "$IP")
 SUBDOMAINS=$(dnsmap "$IP" | tail -n +5 | head -n -3)
 DNS=$(dnsrecon -d "$DOMAIN" -t std |grep -E '\bA\b|\bAAAA\b|\bPTR\b|\bMX\b|\bNS\b|\bTXT\b|\bCNAME\b|\bSOA\b' | sed 's/\[\*\]\s*//g')
 
 #Nmap
-NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/Device type\s*/Tipo de Dispositivo/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Aggressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g')
+NMAP_CALL=$(nmap -O -n -sV "$IP" > /dev/null 2>&1)
+NMAP=$(echo "$NMAP_CALL" | sed -E 's/Device type\s*/Tipo de Dispositivo/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Aggressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g'| grep -E 'PORT|[0-9]+/|Ejecutando|Sistema Operativo|Device')
 
 # Formateamos la salida
 OUTPUT="### Información sobre la dirección o dominio ###\n"
