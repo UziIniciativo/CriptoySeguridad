@@ -62,5 +62,42 @@ SUBDOMAINS=$(dnsmap "$IP" | tail -n +5 | head -n -3)
 DNS=$(dnsrecon -d "$DOMAIN" -t std |grep -E '\bA\b|\bAAAA\b|\bPTR\b|\bMX\b|\bNS\b|\bTXT\b|\bCNAME\b|\bSOA\b' | sed 's/\[\*\]\s*//g')
 
 #Nmap
-NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/\bPORT\b\s*/PUERTO/g; s/\bSTATE\b\s*/ESTADO/g; s/\bSERVICE\b\s*/SERVICIO/g; s/\bVERSION\b\s*/VERSIÓN/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Agressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g')
+NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/Device type\s*/Tipo de Dispositivo/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Aggressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g')
 
+# Formateamos la salida
+OUTPUT="### Información sobre la dirección o dominio ###\n"
+OUTPUT+="\nDirección IP: $IP\n"
+OUTPUT+="Dominio: $DOMAIN\n"
+OUTPUT+="\n### Información WHOIS del Dominio ###\n"
+OUTPUT+="Fecha de Creación: $CREATED\n"
+OUTPUT+="Fecha de Actualización: $UPDATED\n"
+OUTPUT+="Fecha de Expiración: $EXPIRED\n"
+OUTPUT+="\n### Información WHOIS de la IP ###\n"
+OUTPUT+="Propietario: $OWNER\n"
+OUTPUT+="País: $COUNTRY\n"
+OUTPUT+="Estado: $STATE\n"
+OUTPUT+="Ciudad: $CITY\n"
+OUTPUT+="Dirección: $ADDRESS\n"
+OUTPUT+="Código Postal: $POSTALCODE\n"
+OUTPUT+="Persona Responsable: $PERSONAL\n"
+OUTPUT+="Correo Electrónico: $EMAIL\n"
+OUTPUT+="Teléfono: $PHONE\n"
+OUTPUT+="\n### Conectividad ###\n"
+OUTPUT+="Conectividad (ping): $CHECKCON\n"
+OUTPUT+="Latencia: $LATENCY ms\n"
+OUTPUT+="\n### Información Adicional ###\n"
+OUTPUT+="Segmento de Red: $SEGMENT\n"
+OUTPUT+="Dirección IPv4: $IPV4\n"
+OUTPUT+="Dirección IPv6: $IPV6\n"
+OUTPUT+="Reverse DNS: $REVERSE\n"
+OUTPUT+="Ruta de Traceroute: $TRACEROUTE\n"
+OUTPUT+="Subdominios: $SUBDOMAINS\n"
+OUTPUT+="DNS: $DNS\n"
+OUTPUT+="\n### Resultados de Nmap ###\n"
+OUTPUT+="$NMAP\n"
+
+# Guardar en un archivo
+echo -e "$OUTPUT" | tee resultado.txt
+
+# Imprimir en la terminal
+echo -e "$OUTPUT"
