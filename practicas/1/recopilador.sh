@@ -18,6 +18,7 @@ fi
 
 #Catalogamos la entrada
 
+
 if is_ip "$1"; then
     IP="$1"
     DOMAIN=$(nslookup "$1" | grep -E 'name = ' | sed 's/.*name = //')
@@ -30,7 +31,7 @@ else
 fi
 
 # Guardamos fecha
-WHOIS_DOM=$(whois "$DOMINIO")
+WHOIS_DOM=$(whois "$DOMAIN")
 CREATED=$(echo "$WHOIS_DOM" | grep -E 'Creat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)
 UPDATED=$(echo "$WHOIS_DOM" | grep -E 'Updat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)
 EXPIRED=$(echo "$WHOIS_DOM" | grep -E 'Expiration Date: ' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)
@@ -48,3 +49,18 @@ POSTALCODE=$(echo "$WHOIS_IP" | grep -iE 'postalcode' | sed 's/PostalCode: \s*//
 PERSONAL=$(echo "$WHOIS_IP" | grep -iE 'responsible:|person:|OrgTechName:' | sed 's/\(responsible\|OrgTechName\|person\):\s*//')
 EMAIL=$(echo "$WHOIS_IP" | grep -iE 'e-mail:|orgtechemail:' | sed 's/\(e-mail\|OrgTechEmail\):\s*//')
 PHONE=$(echo "$WHOIS_IP" | grep -iE 'phone:' | sed 's/phone:\s*/TrabajadorPhone:/')
+
+# Comprobar conectividad
+PING=$(ping "$IP" -c 4| tail -n 2)
+CHECKCON=$(echo "$PING" |head -n 1| sed  's/packets transmitted/paquetes transmitidos/'| sed  's/received/recibidos/' | sed  's/packet loss/paquetes perdidos/' | sed  's/time/tiempo/')
+LATENCY=$(echo "$PING" | tail -n 1 | sed 's/.*=\s*\([0-9\.]*\)\/\([0-9\.]*\)\/.*/\2/')
+SEGMENT=$(echo "$WHOIS_IP" | grep -iE "inetnum|NetRange|CIDR")
+IPV6=$(digo +short AAAA "$DOMAIN" | head -n 1)
+REVERSE=$(dig -x "$IP" |  grep PTR | grep -oP '\b(?:\d{1,3}\.){3}\d{1,3}\b')
+TRACEROUTE=$(tracerout "$IP")
+SUBDOMAINS=$(dnsmap "$IP" | tail -n +5 | head -n -3)
+DNS=$(dnsrecon -d "$DOMAIN" -t std |grep -E '\bA\b|\bAAAA\b|\bPTR\b|\bMX\b|\bNS\b|\bTXT\b|\bCNAME\b|\bSOA\b' | sed 's/\[\*\]\s*//g')
+
+#Nmap
+NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/\bPORT\b\s*/PUERTO/g; s/\bSTATE\b\s*/ESTADO/g; s/\bSERVICE\b\s*/SERVICIO/g; s/\bVERSION\b\s*/VERSIÓN/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Agressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g')
+
