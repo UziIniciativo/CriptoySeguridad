@@ -62,7 +62,7 @@ SUBDOMAINS=$(dnsmap "$IP" | tail -n +5 | head -n -3)
 DNS=$(dnsrecon -d "$DOMAIN" -t std |grep -E '\bA\b|\bAAAA\b|\bPTR\b|\bMX\b|\bNS\b|\bTXT\b|\bCNAME\b|\bSOA\b' | sed 's/\[\*\]\s*//g')
 
 #Nmap
-NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/Device type\s*/Tipo de Dispositivo/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Aggressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g'| grep -E 'PORT|[0-9]+/|Ejecutando|Sistema Operativo|Tipo de Dispositivo')
+NMAP=$(nmap -O -n -sV "$IP"| sed -E 's/Device type\s*/Tipo de Dispositivo/g; s/Running\s*/Ejecutando/g; s/JUST GUESSING\s*/Aproximadamente/g; s/Aggressive OS guesses\s*/Aproximacion agresiva de Sistema Operativo/g; s/OS details\s*/Detalles del Sistema Operativo/g; s/OS \s*/Sistema Operativo /g'| grep -E 'PORT|[0-9]+/[a-Z]+|Ejecutando|Sistema Operativo|Tipo de Dispositivo')
 
 # Formateamos la salida
 OUTPUT="### Información sobre la dirección o dominio ###\n"
