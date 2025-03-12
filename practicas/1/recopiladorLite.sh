@@ -29,8 +29,8 @@ else
 fi
 
 echo -e "<======================================== DIRECCIONES Y DOMINIOS ========================================>\n"| tee -a "$DOMAIN".txt
-echo -e "\nDirección IP: $IP\n" | tee "$DOMAIN".txt
-echo -e "Dominio: $DOMAIN\n" | tee "$DOMAIN".txt
+echo -e "\nDirección IP: $IP\n" | tee -a "$DOMAIN".txt
+echo -e "Dominio: $DOMAIN\n" | tee -a "$DOMAIN".txt
 
 echo -e "\n<======================================== FECHAS IMPORTANTES ========================================>\n" | tee -a "$DOMAIN".txt
 WHOIS_DOM=$(whois "$DOMAIN")
