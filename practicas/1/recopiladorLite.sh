@@ -41,6 +41,8 @@ echo -e "Fecha de Expiración: $(echo "$WHOIS_DOM" | grep -E 'Expiration Date: '
 
 WHOIS_IP=$(whois "$IP")
 
+echo -e "\n<======================================== DATOS DE LA ORGANIZACIÓN ========================================>\n" | tee -a "$DOMAIN".txt
+
 echo -e "Organización Propietaria: $(echo "$WHOIS_IP" | grep -iE 'owner:|orgname:' | sed 's/\(owner\|OrgName\):\s*//')\n" | tee -a "$DOMAIN".txt
 
 
