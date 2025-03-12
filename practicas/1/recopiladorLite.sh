@@ -36,7 +36,6 @@ echo -e "\nDirección IP: $IP\n" | tee "$DOMAIN".txt
 echo -e "Dominio: $DOMAIN\n" | tee "$DOMAIN".txt
 
 echo -e "\n<======================================== FECHAS IMPORTANTES ========================================>\n" | tee -a "$DOMAIN".txt
-
 WHOIS_DOM=$(whois "$DOMAIN")
 
 echo -e "Fecha de Creación: $(echo "$WHOIS_DOM" | grep -E 'Creat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)\n" | tee -a "$DOMAIN".txt
@@ -58,8 +57,9 @@ echo -e "Correos del Personal: $(echo "$WHOIS_IP" | grep -iE 'e-mail:|orgtechema
 echo -e "Teléfonos del Personal: $(echo "$WHOIS_IP" | grep -iE 'phone:' | sed 's/phone:\s*/TrabajadorPhone:/')" | tee -a $DOMAIN".txt
 \n"
 echo -e "\n<======================================== CONECTIVIDAD ========================================>\n" | tee -a "$DOMAIN".txt
-echo -e "Conectividad (ping): $(ping "$IP" -c 4| tail -n 2)\n" | tee -a "$DOMAIN".txt
-echo -e "Latencia: $(echo "$PING" | tail -n 1 | sed 's/.*=\s*\([0-9\.]*\)\/\([0-9\.]*\)\/.*/\2/') ms\n" | tee -a "$DOMAIN".txt
+PING=$(ping "$IP" -c 4| tail -n 2)
+echo -e "Conectividad (ping): $PING\n" | tee -a "$DOMAIN".txt
+echo -e "Latencia: $(echo "$PING" | tail -n 1 | sed 's/.*=\s*\([0-9\.]*\)\/\([0-9\.]*\)\/.*/\2/') ms" | tee -a "$DOMAIN".txt
 
 echo -e "\n<======================================== INFORMACION DE RED Y DNS ========================================>\n" | tee -a "$DOMAIN".txt
 echo -e "Segmento de Red: $(echo "$WHOIS_IP" | grep -iE "inetnum|NetRange|CIDR")\n" | tee -a "$DOMAIN".txt
