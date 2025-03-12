@@ -1,0 +1,37 @@
+\section{Requisitos para la Prueba de Penetración}
+
+Para llevar a cabo la prueba de penetración enfocada en la recopilación de información, es fundamental definir los requisitos necesarios, tanto en términos de herramientas como de datos a obtener.
+
+\subsection{Problema a Resolver}
+El objetivo principal de esta prueba de penetración es identificar vulnerabilidades en la infraestructura de red del objetivo. Para ello, se busca recopilar información que pueda ser utilizada para detectar posibles puntos de ataque, evaluar la seguridad de los servicios expuestos y determinar medidas de mitigación.
+
+\subsection{Información Necesaria}
+Para realizar un análisis efectivo, se requiere obtener los siguientes datos:
+\begin{itemize}
+    \item \textbf{Direcciones IP y nombres de dominio}: Identificar los activos en la red.
+    \item \textbf{Registros DNS y subdominios}: Conocer la estructura del dominio.
+    \item \textbf{Información WHOIS}: Datos sobre la propiedad y administración de dominios e IPs.
+    \item \textbf{Estado de puertos abiertos y servicios en ejecución}: Identificación de servicios expuestos.
+    \item \textbf{Información del sistema operativo y software utilizado}: Posibles vulnerabilidades en versiones desactualizadas.
+    \item \textbf{Latencia y conectividad}: Evaluación del estado de la red.
+\end{itemize}
+
+\subsection{Herramientas Utilizadas}
+Para la recopilación de información se utilizarán las siguientes herramientas:
+\begin{itemize}
+    \item \textbf{Comandos básicos}: \text{ping}, \text{nslookup}, \text{traceroute}, \text{whois}.
+    \item \textbf{Enumeración de subdominios}: \text{sublist3r}, \text{subfinder}, \text{dnsmap}, \text{dnsrecon}.
+    \item \textbf{Escaneo de puertos y servicios}: \text{nmap}.
+    \item \textbf{Análisis de tráfico}: \text{EtherApe}.
+\end{itemize}
+
+\subsection{Propósito de la Información Recopilada}
+Toda la información obtenida será utilizada con fines de auditoría de seguridad y evaluación de riesgos. La recopilación de estos datos permitirá:
+\begin{itemize}
+    \item Identificar activos expuestos y su nivel de vulnerabilidad.
+    \item Determinar posibles vectores de ataque.
+    \item Proponer estrategias de mitigación para mejorar la seguridad.
+\end{itemize}
+
+\subsection{Consideraciones Éticas y Legales}
+Toda la información recopilada debe manejarse con responsabilidad y confidencialidad, evitando el uso indebido de los datos obtenidos.
