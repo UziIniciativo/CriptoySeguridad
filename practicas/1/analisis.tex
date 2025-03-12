@@ -1,0 +1,64 @@
+\section{Análisis}
+Retomando nuestros apartados durante la adquisición y el procesamiento, filtraremos nuestros resultados de la misma manera.
+
+\subsection{unam.mx}
+
+\begin{enumerate}
+    \item Direcciones y dominios:
+        Todo correcto.
+    \item Fechas importantes: Expira este mes.
+    \begin{enumerate}
+        \item Creación:1989-03-31
+        \item Actualización: 2024-03-27
+        \item Expiración:25-03-30
+    \end{enumerate}
+    \item Datos de la organización: Además de obtener los datos de la UNAM incluye el nombre del servidor intermedio durante el recorrido hasta el servidor objetivo.
+
+    \item Conectividad: Conexión correcta
+
+    \item Información de Red y DNS: Varias subredes, valdría la pena verificar ellas también. Los subdominios nos hablan de contactos para ingeniería social y otros servicios que ofrece la universidad.
+
+    \item Información de puertos, servicios y sistema operativo
+        
+        \begin{enumerate}
+            \item Puertos y servicios: Puerto http abierto, sin cifrado, si alguien se conectara dentro de una red cercana podríamos obtener sus datos en bruto. También podíamos ver que subrutas hay dentro de la página en búsqueda de un archivo perdido con información valiosa.
+            \item Usa un sistema Linux, tiene una forma especial de subir de privilegios.
+        \end{enumerate}
+\end{enumerate}
+
+\subsection{ipn.mx}
+\begin{enumerate}
+
+    \item Direcciones y dominios: Todo correcto
+    \item Fechas importantes: Expira el año siguiente.
+    \item Datos de la organización: Esta administrado por un servidor remoto Microsoft en Estados Unidos. En caso de querer hacer ingeniería social sobre los trabajadores hay que contemplar el lenguaje y el perfil de los usuarios que aparentemente varían de etnias.
+
+    \item Conectividad: Conexión correcta.
+
+    \item Información de Red y DNS: Varias subredes y subdominios. Uno de gran interés es el backup.
+    \item Información de puertos, servicios y sistema operativo: A pesar de lo que dice la aproximación de SO, tcpwrapper es un protocolo usado en distribuciones GNU/Linux.
+
+\end{enumerate}
+
+\subsection{pemex.com}
+
+\begin{enumerate}
+    \item Direcciones y dominios: Todo correcto
+
+    \item Fechas importantes: Expira el siguiente año.
+    \item Datos de la organización: Forma parte del gobierno mexicano. Dentro del personal se encuentran dos personas que aparentemente son parientes (hermanos), implicando un vínculo personal.
+
+    \item Conectividad: Conexión adecuada.
+
+    \item Información de Red y DNS: Varias subredes, al igual muchos servicios varios. Dentro de los subdominios se encuentran contactos con el personal.
+
+    \item Información de puertos, servicios y sistema operativo
+        
+    \item Puertos y servicios:A pesar de lo que dice la aproximación de SO, tcpwrapper es un protocolo usado en distribuciones GNU/Linux.
+
+\end{enumerate}
+
+
+\subsection{gob.mx}
+
+No hay dirección IP en un servidor DNS autorativo.

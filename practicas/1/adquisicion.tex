@@ -1,0 +1,16 @@
+\section{Adquisición - Explicación del script}
+
+Para la elaboración del script tuvimos que separar la información a obtener en diferentes apartados, basados en su tipo y en los comandos que nos facilitan dicha obtención:
+
+\begin{enumerate}
+    \item \textbf{Dirección IP y nombre de dominio:} Dado que el usuario puede insertar cualquiera de estas dos opciones, realizamos un \textbf{nslookup} con el argumento que recibamos. Dependiendo del formato del argumento podemos saber si el resultado del comando será un nombre de dominio o una dirección IP que podramos guardar en unas variables.
+
+    \item \textbf{Fechas Importantes}: Al momento de ejecutar \textbf{whois}, podemos obtener resultados diferentes dependiendo del formato del servidor al que queramos acceder. Si le damos su nombre de dominio, nos dará información relativo únicamente a este, por lo que será su salida la que nos dará las fechas de creación, actualización y expiración del dominio.
+    \item \textbf{Datos de la Organización}: Al dar como argumento la dirección IP a \textbf{whois}, este nos dará información respecto a la organización a la que pertenece el servidor. De acá podemos obtener su nombre, ubicación, dirección, personal y sus datos (como correos y números telefónicos).
+    \item \textbf{Conectividad}. Para poder verificar la calidad e la conexión, hacemos un \textbf{ping} de 4 paquetes a nuestro servidor, al ver que todos los paquetes se enviaron de manera integra, junto a la latencia de la conexión, podemos juzgar su calidad.
+    \item \textbf{Información de Red y DNS}.
+    Dada la dirección IP, podemos conocer más acerca de su estructura. Con \textbf{whois} podemos obtener los segmentos de red que tiene, para darnos una idea de su máscara y las subredes que este puede tener (lo que nos da la posiblidad de hacer movimientos laterales en el futuro). De igual manera, podemos saber que otros servicios brinda el servidor si tenemos también los subdominos dns que este tiene (para ello ocupamos \textbf{dnsmap}. Con \textbf{dig} podemos obtener también los registros reversos y la IPV6 del servidor.
+    De igual manera para conocer el trayecto de la consulta junto a sus saltos usamos a \textbf{traceroute}.
+
+    \item \textbf{Información de puertos, servicios y sistema operativo}. Al leer la documentaciónde \textbf{nmap} sabemos que además de obtener sus puertos, podemos tener sus servicios correspondientes, de la misma manera que podemos hacer una aproximación del sistema operativo del equipo con la bandera -O.
+\end{enumerate}
