@@ -1,6 +1,6 @@
 \section{Preguntas de Pentesting: Recopilación de Información}
 
-\subsection{1. Menciona los tipos de protocolos de red.}
+\subsection{Menciona los tipos de protocolos de red.}
 Los protocolos de red se pueden clasificar en diferentes capas del modelo OSI, dependiendo de su función:
 
 \textbf{Capa de Enlace de Datos}: Controlan la comunicación dentro de una red local.
@@ -38,11 +38,7 @@ Los protocolos de red se pueden clasificar en diferentes capas del modelo OSI, d
     \item IPSec (Internet Protocol Security)
 \end{itemize}
 
-\begin{quote}
-    "Los protocolos de red definen el conjunto de reglas que permiten la comunicación entre dispositivos interconectados y garantizan la interoperabilidad de los sistemas informáticos" (Kurose \& Ross, 2020).
-\end{quote}
-
-\subsection{2. ¿Cómo funcionan los protocolos de red y para qué sirven?}
+\subsection{¿Cómo funcionan los protocolos de red y para qué sirven?}
 Los protocolos de red operan en distintos niveles del modelo OSI (Open Systems Interconnection) y del modelo TCP/IP para permitir la transmisión de datos. Su funcionamiento se basa en la encapsulación de información en paquetes que son transportados de un punto a otro dentro de una red.
 
 \textbf{Funcionamiento}: Cada protocolo tiene reglas específicas sobre cómo se deben enviar, recibir y procesar los datos. Por ejemplo, TCP divide la información en paquetes, los transmite y garantiza su correcta entrega y orden.
@@ -55,11 +51,7 @@ Los protocolos de red operan en distintos niveles del modelo OSI (Open Systems I
     \item Seguridad y autenticación de datos.
 \end{itemize}
 
-\begin{quote}
-    "El diseño modular de los protocolos de red permite que la comunicación se mantenga eficiente y escalable, permitiendo su aplicación en distintos escenarios tecnológicos" (Kurose \& Ross, 2020).
-\end{quote}
-
-\subsection{3. ¿Qué es un sniffer?}
+\subsection{¿Qué es un sniffer?}
 Un \textit{sniffer} es una herramienta que permite capturar y analizar el tráfico de red en tiempo real. Su función principal es interceptar paquetes de datos que circulan en una red, lo que permite a los administradores de seguridad evaluar la comunicación y detectar vulnerabilidades.
 
 \textbf{Usos de un sniffer}:
@@ -78,11 +70,7 @@ Un \textit{sniffer} es una herramienta que permite capturar y analizar el tráfi
     \item Kismet: Sniffer enfocado en redes inalámbricas.
 \end{itemize}
 
-\begin{quote}
-    "Los analizadores de paquetes (sniffers) son esenciales para la supervisión del tráfico de red y la identificación de posibles riesgos de seguridad" (Kurose \& Ross, 2020).
-\end{quote}
-
-\subsection{4. OSINT, ¿qué es y para qué sirve?}
+\subsection{OSINT, ¿qué es y para qué sirve?}
 \textit{OSINT} (Open Source Intelligence) se refiere a la recopilación de información a partir de fuentes abiertas y accesibles al público para obtener inteligencia útil en diversas áreas, incluida la ciberseguridad.
 
 \textbf{Utilidad}:
@@ -93,11 +81,7 @@ Un \textit{sniffer} es una herramienta que permite capturar y analizar el tráfi
     \item Investigación en ciberseguridad para la detección de amenazas.
 \end{itemize}
 
-\begin{quote}
-    "La inteligencia de fuentes abiertas (OSINT) permite recopilar datos valiosos a partir de información pública para su posterior análisis y evaluación" (Mitnick \& Simon, 2002).
-\end{quote}
-
-\subsection{5. Investiga los 5 OSINT más usados.}
+\subsection{Investiga los 5 OSINT más usados.}
 Los cinco \textit{OSINT} más utilizados en ciberseguridad y pruebas de penetración son:
 
 \begin{itemize}
@@ -108,6 +92,49 @@ Los cinco \textit{OSINT} más utilizados en ciberseguridad y pruebas de penetrac
     \item \textbf{Recon-ng}: Framework modular para la recolección de información OSINT.
 \end{itemize}
 
-\begin{quote}
-    "El uso de herramientas OSINT es crucial en la fase de recopilación de información dentro de un test de penetración, ya que permite identificar puntos débiles antes de realizar ataques simulados" (Campbell \& Beach, 2016).
-\end{quote}
+\subsection{Investiga 5 softwares no mencionados en la práctica que sirvan para el análisis de comunicaciones.}
+Existen diversas herramientas adicionales para el análisis de comunicaciones en redes. Algunas de las más utilizadas en ciberseguridad son:
+\begin{itemize}
+    \item \textbf{Zeek (Bro)}: Framework de monitoreo de red en tiempo real, útil para análisis de tráfico avanzado.
+    \item \textbf{Suricata}: Sistema de detección y prevención de intrusos (IDS/IPS) con capacidad de análisis en tiempo real.
+    \item \textbf{TShark}: Versión en línea de comandos de Wireshark, utilizada para captura y análisis de paquetes.
+    \item \textbf{NetworkMiner}: Herramienta de análisis forense de red, útil para extraer archivos e información de tráfico capturado.
+    \item \textbf{P0f}: Detector pasivo de sistemas operativos y monitoreo de tráfico sin enviar paquetes.
+\end{itemize}
+
+\subsection{¿Qué es la ingeniería social?}
+La \textbf{ingeniería social} es una técnica de manipulación psicológica utilizada para obtener información confidencial a través del engaño y la persuasión. Se basa en explotar la confianza y el comportamiento humano en lugar de vulnerabilidades técnicas.
+
+Ejemplos de ingeniería social:
+\begin{itemize}
+    \item \textbf{Phishing}: Suplantación de identidad para obtener credenciales.
+    \item \textbf{Pretexting}: Creación de escenarios falsos para obtener información.
+    \item \textbf{Baiting}: Uso de dispositivos infectados para comprometer sistemas.
+\end{itemize}
+
+\subsection{¿Por qué el eslabón más débil de seguridad son las personas?}
+En ciberseguridad, el factor humano es considerado el \textbf{eslabón más débil} porque las personas pueden ser engañadas con mayor facilidad que los sistemas automatizados. Las razones incluyen:
+\begin{itemize}
+    \item Falta de conocimiento sobre ciberseguridad.
+    \item Uso de contraseñas débiles o repetidas.
+    \item Caída en engaños de phishing o ingeniería social.
+    \item Configuración incorrecta de dispositivos y aplicaciones.
+\end{itemize}
+
+\subsection{¿Qué acciones haces para protegerte de ciberataques?}
+Para mitigar riesgos de ciberseguridad, se pueden implementar diversas buenas prácticas, como:
+\begin{itemize}
+    \item Uso de contraseñas seguras y autenticación multifactor (MFA).
+    \item Evitar enlaces y archivos sospechosos en correos electrónicos.
+    \item Mantener software y sistemas operativos actualizados.
+    \item Uso de VPNs y conexiones seguras para acceder a redes sensibles.
+    \item Realizar copias de seguridad periódicas.
+\end{itemize}
+
+\subsection{¿Crees que tus métodos preventivos son suficientes?}
+La prevención en ciberseguridad es un proceso continuo que debe adaptarse a nuevas amenazas. A pesar de implementar medidas de protección, siempre existe la posibilidad de que surjan nuevas vulnerabilidades. Algunas recomendaciones adicionales incluyen:
+\begin{itemize}
+    \item Realizar auditorías de seguridad periódicas.
+    \item Mantenerse informado sobre las últimas amenazas cibernéticas.
+    \item Implementar sistemas de detección y respuesta ante incidentes.
+\end{itemize}
