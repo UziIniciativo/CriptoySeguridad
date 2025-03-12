@@ -58,7 +58,7 @@ SEGMENT=$(echo "$WHOIS_IP" | grep -iE "inetnum|NetRange|CIDR")
 IPV6=$(dig +short AAAA "$DOMAIN" | head -n 1)
 REVERSE=$(dig -x "$IP" |  grep PTR | grep -oP '\b(?:\d{1,3}\.){3}\d{1,3}\b')
 TRACEROUTE=$(traceroute "$IP")
-SUBDOMAINS=$(dnsmap "$IP" | tail -n +5 | head -n -3)
+SUBDOMAINS=$(dnsmap "$DOMAIN" | tail -n +5 | head -n -3)
 DNS=$(dnsrecon -d "$DOMAIN" -t std |grep -E '\bA\b|\bAAAA\b|\bPTR\b|\bMX\b|\bNS\b|\bTXT\b|\bCNAME\b|\bSOA\b' | sed 's/\[\*\]\s*//g')
 
 #Nmap
@@ -100,4 +100,4 @@ OUTPUT+="$NMAP\n"
 echo -e "$OUTPUT" | tee "$DOMAIN".txt
 
 # Imprimir en la terminal
-#echo -e "$OUTPUT"
+echo -e "$OUTPUT"
