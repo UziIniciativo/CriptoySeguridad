@@ -39,10 +39,10 @@ echo -e "\n<========== FECHAS IMPORTANTES ==========>\n" | tee "$DOMAIN".txt
 
 WHOIS_DOM=$(whois "$DOMAIN")
 
-echo -e "Fecha de Creación: $(echo "$WHOIS_DOM" | grep -E 'Creat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)" | tee "$DOMAIN".txt
-echo -e "Fecha de Actualización:  $(echo "$WHOIS_DOM" | grep -E 'Updat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)" | tee "$DOMAIN".txt
-echo -e "Fecha de Expiración: $(echo "$WHOIS_DOM" | grep -E 'Expiration Date: ' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)\" | tee "$DOMAIN".txt
-"
+echo -e "Fecha de Creación: $(echo "$WHOIS_DOM" | grep -E 'Creat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)\n" | tee "$DOMAIN".txt
+echo -e "Fecha de Actualización:  $(echo "$WHOIS_DOM" | grep -E 'Updat' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)\n" | tee "$DOMAIN".txt
+echo -e "Fecha de Expiración: $(echo "$WHOIS_DOM" | grep -E 'Expiration Date: ' | grep -oP '\d{4}-\d{2}-\d{2}' | head -n 1)\n" | tee "$DOMAIN".txt
+
 WHOIS_IP=$(whois "$IP")
 
 echo -e "Organización Propietaria: $(echo "$WHOIS_IP" | grep -iE 'owner:|orgname:' | sed 's/\(owner\|OrgName\):\s*//')\n" | tee "$DOMAIN".txt
