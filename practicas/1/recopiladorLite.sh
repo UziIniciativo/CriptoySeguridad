@@ -48,10 +48,10 @@ WHOIS_IP=$(whois "$IP")
 echo -e "Organización Propietaria: $(echo "$WHOIS_IP" | grep -iE 'owner:|orgname:' | sed 's/\(owner\|OrgName\):\s*//')\n" | tee -a "$DOMAIN".txt
 
 
-echo -e "Países asociados: $(echo "$WHOIS_IP" | grep -iE 'country:' | sed 's/[cC]ountry: \s*//')\n" | tee -a "$DOMAIN".txt
-echo -e "Estados asociados: $(echo "$WHOIS_IP" | grep -iE 'stateprov:' | sed 's/StateProv: \s*//')\n" | tee -a "$DOMAIN".txt
-echo -e "Ciudades asociadas: $(echo "$WHOIS_IP" | grep -iE 'city:' | sed 's/City: \s*//')\n" | tee -a "$DOMAIN".txt
-echo -e "Direcciones asociadas: $(echo "$WHOIS_IP" | grep -iE 'address:' | sed 's/[aA]ddress: \s*//')\n" | tee -a "$DOMAIN".txt
+echo -e "Países asociados:\n $(echo "$WHOIS_IP" | grep -iE 'country:' | sed 's/[cC]ountry: \s*//')\n" | tee -a "$DOMAIN".txt
+echo -e "Estados asociados:\n $(echo "$WHOIS_IP" | grep -iE 'stateprov:' | sed 's/StateProv: \s*//')\n" | tee -a "$DOMAIN".txt
+echo -e "Ciudades asociadas:\n $(echo "$WHOIS_IP" | grep -iE 'city:' | sed 's/City: \s*//')\n" | tee -a "$DOMAIN".txt
+echo -e "Direcciones asociadas:\n $(echo "$WHOIS_IP" | grep -iE 'address:' | sed 's/[aA]ddress: \s*//')\n" | tee -a "$DOMAIN".txt
 echo -e "Código Postal: $(echo "$WHOIS_IP" | grep -iE 'postalcode' | sed 's/PostalCode: \s*//')\n" | tee -a "$DOMAIN".txt
 echo -e "Personal: $(echo "$WHOIS_IP" | grep -iE 'responsible:|person:|OrgTechName:' | sed 's/\(responsible\|OrgTechName\|person\):\s*//')\n" | tee -a "$DOMAIN".txt
 echo -e "Correos del Personal: $(echo "$WHOIS_IP" | grep -iE 'e-mail:|orgtechemail:' | sed 's/\(e-mail\|OrgTechEmail\):\s*//')\n" | tee -a "$DOMAIN".txt
