@@ -17,9 +17,6 @@ if [ -z "$1" ]; then
 fi
 
 #Catalogamos la entrada
-
-
-
 if is_ip "$1"; then
     IP="$1"
     DOMAIN=$(nslookup "$1" | grep -E 'name = ' | sed 's/.*name = //')
