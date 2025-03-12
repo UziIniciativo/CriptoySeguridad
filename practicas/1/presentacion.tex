@@ -2,7 +2,7 @@
 
 En base a la información obtenida mediante el script desarrollado, es posible formular distintas propuestas de ataque. La recopilación de datos como direcciones IP, nombres de dominio, subdominios, información WHOIS, estado de puertos abiertos y servicios en ejecución nos permite analizar posibles vectores de ataque y evaluar la seguridad del sistema objetivo.
 
-\subsection{1. Análisis de Infraestructura y Explotación de Servicios}
+\subsection{Análisis de Infraestructura y Explotación de Servicios}
 La información recolectada con \textbf{whois}, \textbf{nslookup} y \textbf{ping} nos permite identificar datos clave de la infraestructura del objetivo:
 \begin{itemize}
     \item \textbf{Puertos abiertos y servicios activos}: Usando \textbf{nmap}, podemos conocer qué servicios están expuestos y evaluar vulnerabilidades conocidas en ellos.
@@ -10,7 +10,7 @@ La información recolectada con \textbf{whois}, \textbf{nslookup} y \textbf{ping
     \item \textbf{Reconocimiento del sistema operativo}: La detección de detalles del sistema con \textbf{nmap -O} ayuda a planificar ataques específicos.
 \end{itemize}
 
-\subsection{2. Ingeniería Social y Phishing}
+\subsection{Ingeniería Social y Phishing}
 Si el script logra recopilar información de correos electrónicos mediante \textbf{whois}, es posible diseñar ataques de ingeniería social, como:
 \begin{itemize}
     \item \textbf{Ataques de phishing}: Envío de correos electrónicos falsificados suplantando servicios legítimos.
@@ -18,14 +18,14 @@ Si el script logra recopilar información de correos electrónicos mediante \tex
     \item \textbf{Recopilación de credenciales}: Intentos de obtención de acceso con ataques de fuerza bruta o ingeniería social.
 \end{itemize}
 
-\subsection{3. Ataques a DNS y Subdominios}
+\subsection{Ataques a DNS y Subdominios}
 El uso de herramientas como \textbf{dnsmap} y \textbf{dnsrecon} permite identificar subdominios que pueden ser objetivos de ataque:
 \begin{itemize}
     \item \textbf{Subdominios expuestos}: Si un subdominio apunta a un servicio sin protección, se podría explotar.
     \item \textbf{Ataques de envenenamiento de caché DNS}: Manipulación de respuestas DNS para redirigir a usuarios a sitios maliciosos.
 \end{itemize}
 
-\subsection{4. Denegación de Servicio (DoS/DDoS)}
+\subsection{Denegación de Servicio (DoS/DDoS)}
 Si la latencia de la red es alta o hay sistemas críticos con puertos abiertos, se podrían llevar a cabo ataques de denegación de servicio:
 \begin{itemize}
     \item \textbf{Saturación de peticiones con ping (Ping Flood)}.
