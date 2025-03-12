@@ -97,7 +97,7 @@ OUTPUT+="\n<========== INFORMACION DE PUERTOS, SERVICIOS Y SISTEMA OPERATIVO ===
 OUTPUT+="$NMAP\n"
 
 # Guardar en un archivo
-echo -e "$OUTPUT" | tee resultado.txt
+echo -e "$OUTPUT" | tee "$DOMAIN".txt
 
 # Imprimir en la terminal
 #echo -e "$OUTPUT"
