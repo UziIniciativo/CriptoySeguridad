@@ -1,0 +1,99 @@
+\section{Preguntas y Respuestas}
+
+\begin{enumerate}
+
+    \item \textbf{¿Qué significa que una prueba de penetración sea de caja blanca?}
+
+    Una prueba de penetración de \textit{caja blanca} implica que el evaluador tiene acceso total
+    al conocimiento del sistema o aplicación a probar, incluyendo código fuente, configuraciones,
+    arquitectura de software, credenciales, etc. En esta práctica, contamos con el código fuente de
+    los programas vulnerables, lo que nos permite comprender en detalle su funcionamiento interno
+    y diseñar exploits de forma más directa. (véase \citep{cowan2002}).
+
+    \item \textbf{¿Por qué es necesario aprender a explotar código?}
+
+    Porque comprender cómo se explota el código inseguro permite:
+    \begin{itemize}
+        \item Identificar y mitigar de manera efectiva las vulnerabilidades.
+        \item Validar la seguridad de un sistema, asumiendo el papel de un “atacante ético”.
+        \item Crear conciencia sobre la importancia de escribir y mantener código seguro.
+    \end{itemize}
+
+    (Como discuten \citet{erickson2008} y \citet{howard2003}).
+
+    \item \textbf{Menciona el significado de los siguientes registros: EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP, EIP.}
+
+    Estos registros corresponden a la arquitectura x86 (y en versiones extendidas a x86-64, con nombres similares)(\citealp{foster2005}; \citealp{gupta2012}). A grandes rasgos:
+    \begin{itemize}
+        \item \textbf{EAX (Extended Accumulator Register)}: utilizado generalmente para operaciones aritméticas y como registro de retorno de funciones.
+        \item \textbf{EBX (Extended Base Register)}: se emplea a menudo como base para cálculos de direcciones en memoria.
+        \item \textbf{ECX (Extended Counter Register)}: se usa como contador en bucles e instrucciones repetitivas.
+        \item \textbf{EDX (Extended Data Register)}: apoya a EAX en operaciones aritméticas de mayor tamaño (multiplicaciones y divisiones).
+        \item \textbf{ESI (Extended Source Index)}: comúnmente se usa como puntero fuente en operaciones de cadena.
+        \item \textbf{EDI (Extended Destination Index)}: análogo a ESI, pero para el destino.
+        \item \textbf{EBP (Extended Base Pointer)}: señala el inicio del marco de pila de una función, facilitando acceso a parámetros locales.
+        \item \textbf{ESP (Extended Stack Pointer)}: apunta al tope actual de la pila.
+        \item \textbf{EIP (Extended Instruction Pointer)}: contiene la dirección de la instrucción que se ejecutará a continuación.
+    \end{itemize}
+
+    \item \textbf{¿Qué es \textit{little endian} y \textit{big endian}? ¿Cuál usa mi procesador? ¿Qué arquitectura tiene mi computadora?}
+
+    El \textit{endianess} describe el orden en que los bytes se almacenan en memoria. En 
+    \textit{little endian}, el byte menos significativo se almacena en la dirección de memoria 
+    más baja; en \textit{big endian} sucede lo contrario.  
+    \\
+    Mi procesador (x86\_64) emplea \textit{little endian}, que es el formato común en la mayoría 
+    de procesadores Intel y AMD de 64 bits en la actualidad.
+
+    \item \textbf{¿Qué es un segmento y qué es un \textit{offset}?}
+
+    En el contexto de las arquitecturas x86 clásicas, un \textit{segmento} es una región 
+    lógica de memoria definida por un registro de segmento. El \textit{offset} es el 
+    desplazamiento relativo dentro de ese segmento. Con la evolución a x86\_64, la segmentación 
+    se redujo, pero estos conceptos se mantienen en la base de la arquitectura \citep{erickson2008}.
+
+    \item \textbf{¿Qué realiza la instrucción \texttt{lea} en ensamblador?}
+
+    La instrucción \texttt{lea} (\textit{load effective address}) carga en un registro la
+    dirección efectiva de una operación de memoria en lugar de cargar el valor que reside en 
+    esa dirección. Se usa para cálculos de direcciones y puede reemplazar operaciones de suma 
+    o aritmética directa sin tocar la memoria \citep{erickson2008, howard2003}.
+
+    \item \textbf{¿Crees que esta vulnerabilidad desapareció con las nuevas funciones seguras como \texttt{fgets}?}
+
+    No. Usar funciones más seguras como \texttt{fgets} reduce la probabilidad de un desborda-
+    miento, pero no lo elimina por completo. Las vulnerabilidades de desbordamiento siguen 
+    presentes si no hay validaciones de longitud adecuadas o existen otros errores de manejo 
+    de memoria. Por tanto, las \textit{buenas prácticas de programación} siguen siendo 
+    esenciales para la seguridad.
+
+    \item \textbf{Investiga tres casos famosos en los cuales se explotó la vulnerabilidad de desbordamiento de búffer. ¿Cuáles fueron sus repercusiones?}
+
+    \begin{itemize}
+        \item \textit{Morris Worm (1988)}: primer gusano ampliamente difundido, se basó en
+              varios exploits (incluyendo el desbordamiento de \texttt{finger}), colapsando
+              grandes partes de Internet de aquel entonces \citep{gallagher2014}.
+        \item \textit{Blaster Worm (2003)}: atacaba el servicio RPC de Microsoft Windows,
+              propagándose masivamente y ocasionando importantes pérdidas económicas \citep{cert2003}.
+        \item \textit{Heartbleed (2014)}: vulnerabilidad en la implementación de OpenSSL,
+              que si bien no era un \textit{overflow} clásico, explotó la mala validación de
+              un búfer para leer datos sensibles de la memoria del servidor \citep{morrisworm2018}.
+    \end{itemize}
+
+    \item \textbf{¿Qué es el bug \textit{Off-by-One}? ¿Cómo funciona? ¿Cómo se previene?}
+
+    Es un error en el manejo de índices o límites de un arreglo, en que se accede o sobrescribe 
+    un elemento adicional (o se queda corto por uno). Puede provocar desbordamientos 
+    inadvertidos y comportamientos inesperados. Para prevenirlo, hay que hacer validaciones 
+    apropiadas de los límites y utilizar funciones o métodos que obliguen a especificar la 
+    longitud real de los buffers\citep{howard2003}.
+
+    \item \textbf{¿Se podría explotar la vulnerabilidad de desbordamiento de búfer usando Bash? Argumenta tu respuesta.}
+
+    Es posible pasar \textit{inputs} maliciosos desde Bash a programas vulnerables en C 
+    (encadenando el ataque). Sin embargo, explotar directamente la memoria del intérprete 
+    Bash requeriría un bug interno en Bash escrito en C. Lo más común es usar Bash 
+    simplemente como \textit{medio} para inyectar la cadena maliciosa a programas en C 
+    propensos al desbordamiento.
+    
+\end{enumerate}

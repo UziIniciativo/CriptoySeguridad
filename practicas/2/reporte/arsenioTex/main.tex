@@ -10,6 +10,9 @@
 \usepackage{algorithm}
 \usepackage[parfill]{parskip}
 \usepackage[noend]{algpseudocode}
+\usepackage{natbib}
+\bibliographystyle{apa}
+
 \fuente{montserrat}
 \graphicspath{ {./img/} }
 \setlength{\headheight}{44pt}
@@ -26,13 +29,15 @@ desbordamiento de búfer.}
 
 \encabezado
 
+\input{introduccion.tex}
 \input{recopilacion.tex}
+\input{analisis.tex}
 \input{explotacion.tex}
 \input{post-explotacion.tex}
 \input{alcance.tex}
+\input{preguntas.tex}
 
 
-\bibliographystyle{plain}
 \bibliography{referencias}
 
 \end{document}
