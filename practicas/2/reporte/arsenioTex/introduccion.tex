@@ -1,0 +1,20 @@
+\section{Introducción}
+El \textbf{desbordamiento de búfer} (\emph{buffer overflow}) es una de las vulnerabilidades de seguridad
+más conocidas en el ámbito de la programación en C. Consiste en escribir datos más allá de los
+límites previstos de un arreglo o búfer, lo que puede ocasionar fallos de segmentación o bien
+sobrescritura de secciones de memoria críticas. Esta vulnerabilidad, cuando es explotada por
+atacantes, les permite tomar el control del flujo de ejecución de un programa.
+
+En esta práctica se estudiarán los fundamentos del desbordamiento de búfer y se procederá a
+explotarlo en dos programas escritos en C que contienen funciones deliberadamente vulnerables.
+Asimismo, se demostrará cómo es posible ejecutar código privilegiado (o acceder a información
+sensible) sin cumplir los requisitos previstos en el programa. Para ello, se utilizarán herramientas
+de depuración (\texttt{gdb}) y lenguajes de scripting (\texttt{python}) que facilitan la interacción
+con la memoria y la construcción de los \emph{exploits}.
+
+Finalmente, se plantearán métodos de mitigación y corrección de las vulnerabilidades, como el
+uso de funciones seguras para lectura de cadenas (\texttt{fgets} en lugar de \texttt{gets}), la
+inclusión de protecciones en la pila, y buenas prácticas de programación que ayuden a prevenir
+este tipo de fallos.
+
+\vspace{1em}

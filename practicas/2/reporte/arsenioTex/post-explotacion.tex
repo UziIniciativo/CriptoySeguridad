@@ -1,0 +1,17 @@
+\section{Post-explotación}
+
+Lo que hicimos básicamente fue darle de entrada a los programas una cadena compuesta por dos partes. La primera subcadena consistió en una cantidad de letras \texttt{A} lo suficientemente grande para poder llenar el espacio designado en el stack al buffer. La segunda subcadena consistía en la dirección de la función a la que buscamos acceder.
+
+El exploit es capaz de llevarnos a la ejecución de dicha función, pues dentro del stack, el bloque del buffer se encuentra justo al lado del bloque de la dirección de retorno. Esto hace que al momento de acceder a dicho bloque, en lugar de volver a la dirección de retorno de la llamada inicial, nos lleve a la que nosotros pusimos.
+
+De esta manera, en ambos casos llegamos los bloque de código que queríamos sin tener que poner las contraseñas requeridas.
+
+Para poder mejorar la seguridad del código, de entrada, no hay que usar funciones de bajo nivel tan inseguras como \texttt{gets()}. Siendo preferibles el uso de otras funciones para recibir entradas, como lo es \texttt{fgets()}. El cual comprueba el tamaño de la entrada para evitar desbordamientos.
+
+No obstante, el mejoramiento no se debe limitar únicamente a eso. 
+
+El primer código hace una llamada al sistema directamente, el cual, tras esta práctica acaba de demostrar lo peligroso que es esto, pues abre una ventana para poder modificar todo el sistema. (Es incluso por esta razón, el porqué no es recomendable darle a lenguajes de programación, la posibilidad de ser ejecutados como root por cualquier usuario).
+
+Otra opción es la inclusión de control de errores, ya que, a pesar de tener métodos seguros, es mejor establecer una lógica robusta que ni siquiera le de la oportunidad al usuario de alcanzar casos críticos.
+
+Otro añadido, que debería considerar más por convención que por otra cosa, es que al momento de hacer las verificaciones de las contraseñas, estas no se hagan en texto plano, si no bajo un hasheo. Esto tampoco es enteramente seguro, pues pude haber ataques de diccionario o fuerza bruta, pero impide una presencia explícita de la contraseña en el código.

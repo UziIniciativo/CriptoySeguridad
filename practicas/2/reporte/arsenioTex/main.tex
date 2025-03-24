@@ -1,0 +1,38 @@
+\documentclass[a4,10pt,comentarios]{aleph-notas}
+\usepackage{aleph-comandos}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage[parfill]{parskip}
+\usepackage[noend]{algpseudocode}
+\fuente{montserrat}
+\graphicspath{ {./img/} }
+\setlength{\headheight}{44pt}
+
+% -- Datos de la tarea
+\institucion{Criptografía y Seguridad}
+\autor{Uziel Vidal Cruz Vargas\\
+Emilio Arsenio Raudry Rico}
+\tema{Práctica 02: Explotación de vulnerabilidades:\\
+desbordamiento de búfer.}
+
+\logouno[9cm]{img/fc}
+\begin{document}
+
+\encabezado
+
+\input{recopilacion.tex}
+\input{explotacion.tex}
+\input{post-explotacion.tex}
+\input{alcance.tex}
+
+
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{document}

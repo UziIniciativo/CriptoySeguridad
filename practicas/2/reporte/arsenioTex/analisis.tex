@@ -1,0 +1,6 @@
+\section{Análisis}
+
+Al analizar ambos códigos podemos darnos cuenta de que comparten la misma vulnerabilidad, la cual reside en el uso de la función de bajo nivel \textit{gets()} para recibir una entrada por parte del usuario.
+
+Esto es crucial para nuestro ataque, pues dentro del stack de nuestra memoria, nos dará un espacio fijo para el buffer, cuyo límite no tendrá ningún tipo de impedimento para poder ser traspasado.
+

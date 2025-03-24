@@ -1,0 +1,6 @@
+\section{Alcance}
+El alcance de un desbordamiento de buffer es igual de amplio que el alcance que pude tener la función a la que queramos acceder desde su dirección en el  \texttt{stack}.
+
+En la función \texttt{granted()} (que accedimos en el primer código) hay una línea que abre la terminal de gnome (aunque por la configuración de nuestra máquina virtual, esta no se pudo abrir). Lo que nos puede permitir hacer modificaciones en el sistema e incluso, la posibilidad de escalar privilegios para poder hacer todo lo que queramos siendo root.
+
+También puede ser que la función a la que llamemos, nos permita acceder información sensible, como lo fue con \texttt{secretMsg()}, que podamos robar, o incluso ocupar después para hacer movimientos laterales o causar mayores daños.

@@ -1,0 +1,13 @@
+\section{Recopilación}
+
+Cada uno de los dos programas cuenta con una función la cual solo es accesible si ingresamos una contraseña correcta. Nuestra prueba consiste en probar lo opuesto, demostrar que podemos acceder a dichas funciones (y la información que estas contienen) sin necesidad de si quiera usar las contraseñas.
+
+Al tratarse de una prueba de caja blanca, contamos ya con el código fuente, el cual nos servirá para que sepamos qué direcciones de memoria acceder más adelante. Para el punto anterior nos apoyaremos en la herramienta GDB.
+
+Como nuestro ataque será mediante un buffer overflow, también necesitaremos una herramienta con estructuras de flujo iterativas como python3.
+
+Finalmente, como tratamos con un tipo de ataque altamente conocido y tratado a lo largo de los años, partiremos de que la aleatoriedad de espacio de direcciones virtuales en el kernel de Linux se encuentra desactivado. Esto lo podemos lograr con el comando:
+
+\begin{center}
+    \texttt{sudo sysctl -w kernel.randomize\_va\_space=0}
+\end{center}
