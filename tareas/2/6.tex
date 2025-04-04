@@ -1,0 +1,62 @@
+Determina si $a$ es residuo cuadrático módulo $n$. Muestra tu procedimiento.
+
+\begin{enumerate}
+    \item $a = 6007$, $n=1902$
+    
+    Se factoriza $n = 2 \cdot 3 \cdot 317$, por lo que usamos el símbolo de Jacobi:
+
+    \[
+    \left( \frac{6007}{1902} \right) = \left( \frac{6007}{2} \right) \left( \frac{6007}{3} \right) \left( \frac{6007}{317} \right)
+    \]
+
+    Calculamos cada uno:
+    \begin{itemize}
+    \item $6007 \mod 8 = 7 \Rightarrow \left( \frac{6007}{2} \right) = 1$ (pues $7 \equiv 7 \mod 8$)
+    \item $6007 \mod 3 = 1 \Rightarrow \left( \frac{6007}{3} \right) = \left( \frac{1}{3} \right) = 1$
+    \item $\left( \frac{6007}{317} \right) = 1$ (Fendt, s. f.)
+    \end{itemize}
+
+
+    \[
+    \left( \frac{6007}{2} \right) = 1, \quad \left( \frac{6007}{3} \right) = 1, \quad \left( \frac{6007}{317} \right) = 1
+    \]
+
+    \[
+    \left( \frac{6007}{1902} \right) = 1 \cdot 1 \cdot 1 = 1
+    \]
+
+    El símbolo de Jacobi da $1$, lo cual sugiere que podría ser un residuo cuadrático, pero no garantiza que lo sea (pues $n$ no es primo).
+
+        \item $a=83$, $n=593$
+        
+        Como $n$ es primo, se usa el símbolo de Legendre:
+
+        \[
+    \left( \frac{83}{593} \right) = 1
+    \]
+
+    Entonces, $83$ es un residuo cuadrático módulo $593$. (Fendt, s. f.)
+
+    \item $a=3677176$, $n=4568731$
+    
+    Como $n$ es primo:
+
+    \[
+    \left( \frac{3677176}{4568731} \right) = 1
+    \]
+
+    Por lo tanto, $3677176$ es un residuo cuadrático módulo $4568731$. (Fendt, s. f.)
+
+    \item $a=4568723$, $n=4568731$
+    
+    Nuevamente $n$ es primo:
+
+    \[
+    \left( \frac{4568723}{4568731} \right) = 1
+    \]
+
+    Entonces, $4568723$ es un residuo cuadrático módulo $4568731$. (Fendt, s. f.)
+
+    Los cálculos se apoyaron en una herramienta online para obtener los símbolos de Legendre y Jacobi \cite{fendt_legendre}.
+
+\end{enumerate}

@@ -1,0 +1,22 @@
+Supón que se manda un criptotexto $c = c_1,c_2,c_3...$ pero se pierde el bloque $c_2$, así que se recibe $c=c_1,c_3,c_4,...$ Al descifrar el mensaje ¿Cuál es el efecto de un bloque no recibido al usar los modos de operación CBC, OFB y CTR?
+
+\begin{itemize}
+    \item \textbf{CBC (Cipher Block Chaining):} Para descifrar un bloque $c_i$ se necesita el bloque $c_{i-1}$. Por lo tanto, al perder $c_2$:
+    \begin{itemize}
+        \item No se puede recuperar el mensaje correspondiente a $c_2$.
+        \item El mensaje correspondiente a $c_3$ será incorrecto.
+        \item A partir de $c_4$, el descifrado vuelve a funcionar, pero el resultado estará afectado por el error de $c_3$.
+    \end{itemize}
+
+    \item \textbf{OFB (Output Feedback):} Es un modo de cifrado por flujo donde la clave de cada bloque se genera independientemente del mensaje. Por tanto:
+    \begin{itemize}
+        \item Solo se pierde el mensaje correspondiente a $c_2$.
+        \item Los demás bloques pueden descifrarse correctamente.
+    \end{itemize}
+
+    \item \textbf{CTR (Counter Mode):} Similar a OFB, cada bloque se cifra usando una clave generada por un contador, lo que permite paralelismo. Entonces:
+    \begin{itemize}
+        \item Solo se pierde el bloque correspondiente a $c_2$.
+        \item Los demás bloques no se ven afectados.
+    \end{itemize}
+\end{itemize}

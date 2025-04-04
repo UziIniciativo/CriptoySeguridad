@@ -1,0 +1,5 @@
+Investiga un caso de la vida real donde se rompió la seguridad con máximas de Kerckhoffs.
+
+Las máximas de Kerckhoffs establecen que la seguridad de un sistema criptográfico debe residir únicamente en el secreto de la clave, y no en la confidencialidad del algoritmo. Un caso real donde se violó este principio fue en el diseño del protocolo WEP (Wired Equivalent Privacy) para redes Wi-Fi.
+
+Inicialmente, el algoritmo de WEP se mantuvo en secreto, confiando en la seguridad por oscuridad. Sin embargo, una vez que el algoritmo se hizo público y fue analizado por la comunidad, se descubrieron múltiples vulnerabilidades, como la reutilización de vectores de inicialización y la debilidad del algoritmo RC4 con claves pequeñas. Esto permitió que atacantes pudieran recuperar claves WEP con herramientas automatizadas en pocos minutos. Este caso demuestra que la falta de transparencia en el diseño criptográfico puede llevar a una falsa sensación de seguridad. \cite{michael_kerckhoffs}.
